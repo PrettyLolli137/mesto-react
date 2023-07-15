@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-function PopupImage({card, onClose}){
+function ImagePopup({card, onClose, isOpen}){
 
     return (
-        <div className={`popup popup_type_img popup_overlay_dark ${card ? "popup_opened" : ''}`}>
+        <div className={`popup popup_type_img popup_overlay_dark ${isOpen && "popup_opened"}`}>
         {card && (
         <div className="popup__images-container">
             <button className="popup__close" type="button" onClick={onClose}></button>
@@ -22,4 +22,4 @@ function PopupImage({card, onClose}){
 
 
 
-export default PopupImage;
+export default ImagePopup;

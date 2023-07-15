@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import Main from './Main.jsx';
 import Footer from './Footer.jsx';
-import PopupImage from './PopupImage.jsx';
+import ImagePopup from './ImagePopup.jsx';
 import PopupWithForm from './PopupWithForm.jsx';
 
 
@@ -14,6 +14,8 @@ function App() {
   const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [isDeletePopup, setDeleteCardPopup] = React.useState(false);
+  const [isImagePopup, setImagePopup] = React.useState(false);
+
 
 
 
@@ -33,18 +35,21 @@ function App() {
 
   function handleCardClick(card) {
     setSelectedCard(card);
+    setImagePopup(true);
+
   }
 
   function handleDeleteCard() {
     setDeleteCardPopup(true);
   }
 
-  function closeAllPopup() {
+  function closeAllPopups() {
     setEditPopupOpen(false)
     setAvatarPopupOpen(false)
     setAddPopupOpen(false)
     setSelectedCard(null)
     setDeleteCardPopup(false)
+    setImagePopup(false)
   }
 
 
@@ -63,9 +68,10 @@ function App() {
         onDeleteCard={handleDeleteCard}
       />
       <Footer />
-      <PopupImage
+      <ImagePopup
         card={selectedCard}
-        onClose={closeAllPopup}
+        isOpen={isImagePopup}
+        onClose={closeAllPopups}
 
       />
 
@@ -74,7 +80,7 @@ function App() {
         title="Редактировать профиль"
         btnText="Сохранить"
         isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopup}
+        onClose={closeAllPopups}
       >
         <label className="popup__input-elements">
           <input id="username" type="text" placeholder="Введите Имя"
@@ -94,7 +100,7 @@ function App() {
         title="Новое место"
         btnText="Создать"
         isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopup}
+        onClose={closeAllPopups}
       >
         <input id="usernameAdd" type="text" placeholder="Название" className="popup__input popup__input_type_text "
           name="name" required minLength="2" maxLength="30" />
@@ -109,7 +115,7 @@ function App() {
         title="Обновить аватар"
         btnText="Сохранить"
         isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopup}
+        onClose={closeAllPopups}
       >
         <input id="url" type="url" placeholder="Ссылка на картинку" className="popup__input popup__input_type_link"
           name="link" required />
@@ -121,7 +127,7 @@ function App() {
         title="Вы уверены?"
         btnText="Да"
         isOpen={isDeletePopup}
-        onClose={closeAllPopup}
+        onClose={closeAllPopups}
       />
     </div>
     
