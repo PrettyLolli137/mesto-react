@@ -1,8 +1,8 @@
 import React from 'react';
 import api from '../utils/Api';
-import Card from './Card';
+import Card from './Card.jsx';
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteCard }) {
 
     const [userName, setUserName] = React.useState('');
     const [userDescription, setUserJob] = React.useState('');
@@ -12,11 +12,11 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
     React.useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()])
-            .then(([dataUser, dataCards]) => {
-                setUserName(dataUser.name);
-                setUserJob(dataUser.about);
-                setUserAvatar(dataUser.avatar);
-                setCards(dataCards);
+            .then(([resData, resCardInfo]) => {
+                setUserName(resData.name);
+                setUserJob(resData.about);
+                setUserAvatar(resData.avatar);
+                setCards(resCardInfo);
             })
             .catch(err => console.log(`Что-то пошло не так: ${err}`));
     }, []);
@@ -39,10 +39,10 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
             <section className="groups">
             {cards ? (
                     cards.map((card) => (
-                        <Card card={card} key={card._id} onCardClick={onCardClick} />
+                        <Card card={card} key={card._id} onCardClick={onCardClick} onDeleteCard={onDeleteCard}  />
                     ))
                 ) : (
-                    <p>Loading...</p>
+                    <p>Загрузка...</p>
                 )}
             </section>
         </main>
@@ -52,7 +52,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 export default Main;
 
 /*
-{cards ? (
+ {cards ? (
                     cards.map((card) => (
                         <Card card={card} key={card._id} onCardClick={onCardClick} />
                     ))
@@ -60,5 +60,5 @@ export default Main;
                     <p>Loading...</p>
                 )}
 
-
+resCardInfo.forEach(card => card._myid = resData._id)
 */

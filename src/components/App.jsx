@@ -1,10 +1,10 @@
 
 import React from 'react';
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
-import PopupImage from './PopupImage';
-import PopupWithForm from './PopupWithForm';
+import Header from './Header.jsx';
+import Main from './Main.jsx';
+import Footer from './Footer.jsx';
+import PopupImage from './PopupImage.jsx';
+import PopupWithForm from './PopupWithForm.jsx';
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
   const [isAddPlacePopupOpen, setAddPopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
+  const [isDeletePopup, setDeleteCardPopup] = React.useState(false);
 
 
 
@@ -30,10 +31,12 @@ function App() {
     setAddPopupOpen(true)
   }
 
-
-
   function handleCardClick(card) {
     setSelectedCard(card);
+  }
+
+  function handleDeleteCard() {
+    setDeleteCardPopup(true);
   }
 
   function closeAllPopup() {
@@ -41,6 +44,7 @@ function App() {
     setAvatarPopupOpen(false)
     setAddPopupOpen(false)
     setSelectedCard(null)
+    setDeleteCardPopup(false)
   }
 
 
@@ -56,6 +60,7 @@ function App() {
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onCardClick={handleCardClick}
+        onDeleteCard={handleDeleteCard}
       />
       <Footer />
       <PopupImage
@@ -115,6 +120,8 @@ function App() {
         name="delete"
         title="Вы уверены?"
         btnText="Да"
+        isOpen={isDeletePopup}
+        onClose={closeAllPopup}
       />
     </div>
     

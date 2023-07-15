@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ card, onCardClick }) {
+function Card({ card, onCardClick, onDeleteCard }) {
     function handleCardClick() {
         onCardClick(card);
     }
@@ -13,10 +13,10 @@ function Card({ card, onCardClick }) {
                 <img
                     className="groups__image groups__image_popup_opened"
                     src={card.link}
-                    alt="Фото"
+                    alt={`Изображение ${card.name}`}
                     onClick={handleCardClick}
                 />
-                <button className="groups__deletebtn"></button>
+                <button className="groups__deletebtn" onClick={onDeleteCard}></button>
                 <div className="groups__mask">
                     <h2 className="groups__text">{card.name}</h2>
                     <div className="groups__like-container">
