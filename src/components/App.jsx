@@ -6,7 +6,6 @@ import Footer from './Footer.jsx';
 import ImagePopup from './ImagePopup.jsx';
 import PopupWithForm from './PopupWithForm.jsx';
 
-
 function App() {
 
   const [isEditProfilePopupOpen, setEditPopupOpen] = React.useState(false);
@@ -16,18 +15,13 @@ function App() {
   const [isDeletePopup, setDeleteCardPopup] = React.useState(false);
   const [isImagePopup, setImagePopup] = React.useState(false);
 
-
-
-
   function handleEditProfileClick() {
     setEditPopupOpen(true)
   }
 
-
   function handleEditAvatarClick() {
     setAvatarPopupOpen(true)
   }
-
 
   function handleAddPlaceClick() {
     setAddPopupOpen(true)
@@ -36,7 +30,6 @@ function App() {
   function handleCardClick(card) {
     setSelectedCard(card);
     setImagePopup(true);
-
   }
 
   function handleDeleteCard() {
@@ -51,9 +44,6 @@ function App() {
     setDeleteCardPopup(false)
     setImagePopup(false)
   }
-
-
-
 
   return (
     <div className="page">
@@ -72,7 +62,6 @@ function App() {
         card={selectedCard}
         isOpen={isImagePopup}
         onClose={closeAllPopups}
-
       />
 
       <PopupWithForm
@@ -130,10 +119,7 @@ function App() {
         onClose={closeAllPopups}
       />
     </div>
-    
-    
   );
-
 };
 
 export default App;

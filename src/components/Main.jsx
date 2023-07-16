@@ -7,8 +7,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteCa
     const [userName, setUserName] = React.useState('');
     const [userDescription, setUserJob] = React.useState('');
     const [userAvatar, setUserAvatar] = React.useState('');
-    const [cards, setCards] = React.useState();
-
+    const [cards, setCards] = React.useState([]);
 
     React.useEffect(() => {
         Promise.all([api.getUserInfo(), api.getInitialCards()])

@@ -5,8 +5,6 @@ function Card({ card, onCardClick, onDeleteCard }) {
         onCardClick(card);
     }
 
-
-
     return (
         <ul className="groups__group">
             <li className="groups__element">
@@ -31,12 +29,3 @@ function Card({ card, onCardClick, onDeleteCard }) {
 }
 
 export default Card;
-
-
-
-
-/*
-
-<ul className="groups__group">
-</ul>
-*/

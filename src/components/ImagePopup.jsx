@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function ImagePopup({card, onClose, isOpen}){
 
     return (
@@ -15,11 +14,7 @@ function ImagePopup({card, onClose, isOpen}){
         </div>
         )}
     </div>
-
     );
-
 }
-
-
 
 export default ImagePopup;
