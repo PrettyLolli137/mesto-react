@@ -21,10 +21,9 @@ class Api {
         })
             .then(this._checkResponse);
     }
-/*
+
     // Редактирование информации о пользователе
     setUserInfo(data) {
-        console.log(data);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
@@ -42,12 +41,12 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.url,
+                avatar: data.avatar,
             })
         })
             .then(this._checkResponse);
     }
-*/
+
     // Получение списка карточек
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
@@ -55,7 +54,7 @@ class Api {
         })
             .then(this._checkResponse);
     }
-/*
+
     // Добавление новой карточки
     addCard(cardInfo) {
         return fetch(`${this._baseUrl}/cards`, {
@@ -95,7 +94,7 @@ class Api {
         })
             .then(this._checkResponse);
     }
-*/
+
 }
 
 const api = new Api({
